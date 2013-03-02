@@ -1,0 +1,351 @@
+#!/bin/bash
+# if bash is not in /bin/bash - change it! whereis bash shows that
+
+
+
+#*****************************************************
+# HELP  ************************************
+#*****************************************************
+
+#check if input not empty
+#if no command specified - show help and exit
+if [ -z $1 ];
+then
+echo " "
+echo "ia - InterActive Assistant"
+echo " "
+echo "Asks questions and adds respective options to the command given"
+echo "thus easy constructing SomeCommand -dce -X 54 v23 s file3  :)"
+echo "So no need to remember option names!"
+echo "By default runs the command with thus constructed  options"
+echo "Use -s (or -show which is same) to only show result and not run"
+echo " "
+echo "CALL ME LIKE: ia Command [-m | -s]       USE -m OR -s"
+echo "OR LIKE       ia Command [-min | -show]  USE -min OR -show"
+echo " "
+echo "-m or -min  : for minimal output (not default)"
+echo "-s or -show : only show and don't run command with constructed options"
+echo " "
+echo "Example 1: ia cut"
+echo "Example 2: ia ps -s"
+echo "Example 3: ia mount -min"
+echo "INCORECT USE: ia cut -s -m"
+echo " "
+
+exit 1
+fi
+
+
+#if -h option  - show help and exit
+if [ "$1" = "-h" ];
+then
+echo " "
+echo "ia - InterActive Assistant"
+echo " "
+echo "Asks questions and adds respective options to the command given"
+echo "thus easy constructing SomeCommand -dce -X 54 v23 s file3  :)"
+echo "So no need to remember option names!"
+echo "By default runs the command with thus constructed  options"
+echo "Use -s (or -show which is same) to only show result and not run"
+echo " "
+echo "CALL ME LIKE: ia Command [-m | -s]       USE -m OR -s"
+echo "OR LIKE       ia Command [-min | -show]  USE -min OR -show"
+echo " "
+echo "-m or -min  : for minimal output (not default)"
+echo "-s or -show : only show and don't run command with constructed options"
+echo " "
+echo "Example 1: ia cut"
+echo "Example 2: ia ps -s"
+echo "Example 3: ia mount -min"
+echo "INCORECT USE: ia cut -s -m"
+echo " "
+
+exit 1
+fi
+
+
+#if --h option  - show help and exit
+if [ "$1" = "--h" ];
+then
+echo " "
+echo "ia - InterActive Assistant"
+echo " "
+echo "Asks questions and adds respective options to the command given"
+echo "thus easy constructing SomeCommand -dce -X 54 v23 s file3  :)"
+echo "So no need to remember option names!"
+echo "By default runs the command with thus constructed  options"
+echo "Use -s (or -show which is same) to only show result and not run"
+echo " "
+echo "CALL ME LIKE: ia Command [-m | -s]       USE -m OR -s"
+echo "OR LIKE       ia Command [-min | -show]  USE -min OR -show"
+echo " "
+echo "-m or -min  : for minimal output (not default)"
+echo "-s or -show : only show and don't run command with constructed options"
+echo " "
+echo "Example 1: ia cut"
+echo "Example 2: ia ps -s"
+echo "Example 3: ia mount -min"
+echo "INCORECT USE: ia cut -s -m"
+echo " "
+
+exit 1
+fi
+
+
+#if -help option  - show help and exit
+if [ "$1" = "-help" ];
+then
+echo " "
+echo "ia - InterActive Assistant"
+echo " "
+echo "Asks questions and adds respective options to the command given"
+echo "thus easy constructing SomeCommand -dce -X 54 v23 s file3  :)"
+echo "So no need to remember option names!"
+echo "By default runs the command with thus constructed  options"
+echo "Use -s (or -show which is same) to only show result and not run"
+echo " "
+echo "CALL ME LIKE: ia Command [-m | -s]       USE -m OR -s"
+echo "OR LIKE       ia Command [-min | -show]  USE -min OR -show"
+echo " "
+echo "-m or -min  : for minimal output (not default)"
+echo "-s or -show : only show and don't run command with constructed options"
+echo " "
+echo "Example 1: ia cut"
+echo "Example 2: ia ps -s"
+echo "Example 3: ia mount -min"
+echo "INCORECT USE: ia cut -s -m"
+echo " "
+
+exit 1
+fi
+
+
+#if --help option  - show help and exit
+if [ "$1" = "--help" ];
+then
+echo " "
+echo "ia - InterActive Assistant"
+echo " "
+echo "Asks questions and adds respective options to the command given"
+echo "thus easy constructing SomeCommand -dce -X 54 v23 s file3  :)"
+echo "So no need to remember option names!"
+echo "By default runs the command with thus constructed  options"
+echo "Use -s (or -show which is same) to only show result and not run"
+echo " "
+echo "CALL ME LIKE: ia Command [-m | -s]       USE -m OR -s"
+echo "OR LIKE       ia Command [-min | -show]  USE -min OR -show"
+echo " "
+echo "-m or -min  : for minimal output (not default)"
+echo "-s or -show : only show and don't run command with constructed options"
+echo " "
+echo "Example 1: ia cut"
+echo "Example 2: ia ps -s"
+echo "Example 3: ia mount -min"
+echo "INCORECT USE: ia cut -s -m"
+echo " "
+
+exit 1
+fi
+
+
+#if -? option  - show help and exit
+if [ "$1" = "-?" ];
+then
+echo " "
+echo "ia - InterActive Assistant"
+echo " "
+echo "Asks questions and adds respective options to the command given"
+echo "thus easy constructing SomeCommand -dce -X 54 v23 s file3  :)"
+echo "So no need to remember option names!"
+echo "By default runs the command with thus constructed  options"
+echo "Use -s (or -show which is same) to only show result and not run"
+echo " "
+echo "CALL ME LIKE: ia Command [-m | -s]       USE -m OR -s"
+echo "OR LIKE       ia Command [-min | -show]  USE -min OR -show"
+echo " "
+echo "-m or -min  : for minimal output (not default)"
+echo "-s or -show : only show and don't run command with constructed options"
+echo " "
+echo "Example 1: ia cut"
+echo "Example 2: ia ps -s"
+echo "Example 3: ia mount -min"
+echo "INCORECT USE: ia cut -s -m"
+echo " "
+
+exit 1
+fi
+
+#*****************************************************
+# END HELP  ************************************
+#*****************************************************
+
+
+
+#*****************************************************
+#*****************************************************
+# COMMAND SELECTION CASE START ***********************
+#*****************************************************
+#*****************************************************
+case "$1" in
+
+cut)  #cut CASE START
+
+#*****************************************************
+# COMMAND cut START BLOCK ****************************
+#*****************************************************
+
+
+#SHOW CUT INFO (don't show on -m | -min options ************
+#***********************************************************
+
+# if -m OR -min don't show command with options
+if [ "$2" = "-m" ];
+then echo ""
+else
+   if [ "$2" = "-min" ];
+    then
+     echo ""
+    else 
+
+echo " "
+echo "ALL SUPPORTED: cut -d -c -b -f --output-delimiter MyFileName"
+echo " "
+echo "SAID A, SAY B:  ( -d => -f )  "
+echo " "
+echo "NEVER TOGETHER:   1.  ( -d + -f ) vs  -c / -b "
+echo "  "
+echo "NEVER TOGETHER:   2.  -c vs -b "
+echo " "
+echo "ABSOLUTELY OPTIONAL:   --output-delimiter"
+echo " "
+echo "PRESS ANYKEY TO CONTINUE"
+read tmp2342
+
+  fi
+fi
+#END CUT INFO**********************************************
+#***********************************************************
+
+# Get file name
+echo "  "
+echo "File to process (with path if needed): "
+read MYFILE
+echo " "
+
+
+# -d
+echo "(-d) Delimiter (Any SINGLE character) (DEFAULT -  TAB-delimiter): "
+read d_OPT # for -d
+echo " "
+
+
+# -f
+echo "(-f) Which delimited blocks to return? Input Example: 1 or 1,2,3 or 3,10-12,50). Leave empty for all blocks. Your input:  "
+read f_OPT #for -f
+echo " "
+
+
+# -c option
+echo "(-c) Char Position (char number in string): "
+read c_OPT
+echo " "
+
+
+#--output-delimiter
+echo "(--output-delimiter) Separate returned values by other delimiter. Leave empty if this not wanted. Output Delimiter:"
+read output_delimiter_OPT
+echo " "
+
+
+# -b option
+echo "(-b) Byte Position (shift in bytes in string): "
+read b_OPT
+echo " "
+
+
+     if [ -n "$c_OPT" ];
+     then
+       options="${options} -c${c_OPT}"
+     fi
+
+    if [ -n "$b_OPT" ];
+    then
+       options="${options} -b${b_OPT}"
+    fi
+
+    if [ -n "$d_OPT" ];
+    then
+       options="${options} -d${d_OPT}"
+    fi
+
+    if [ -n "$f_OPT" ];
+    then
+       options="${options} -f${f_OPT}"
+    fi
+
+    if [ -n "$output_delimiter_OPT" ];
+    then
+       options="${options} --output_delimiter=${output_delimiter_OPT}"
+
+    fi
+
+
+#FINAL cut
+
+Command="cut${options} ${MYFILE}"
+
+#*****************************************************
+# COMMAND cut END BLOCK ************************************
+#*****************************************************
+;; # END cut CASE BLOCK
+
+
+#*****************************************************
+# CASE DEFAULT: COMMAND NOT KNOWN TO IA **************
+#*****************************************************
+*)
+echo " "
+echo "This command is not known to ia"
+exit 2
+;;
+
+esac  #END CASE (COMMAND PARSE|SELECT|PROCESS)
+#*****************************************************
+# END CASE FOR ALL COMMANDS **************************
+#*****************************************************
+
+
+
+
+
+#******************************************************************
+#******************************************************************
+#FINAL FOR ALL COMMANDS                ****************************
+#******************************************************************
+#******************************************************************
+#******************************************************************
+
+# if -m OR -min don't show command with options
+if [ "$2" = "-m" ];
+then echo ""
+else
+   if [ "$2" = "-min" ];
+    then
+     echo ""
+    else echo $Command  #show  command
+   fi    
+ fi
+
+echo " "
+
+#exit and don't execute if  -s | -show options
+if [ "$2" = "-s" ];
+ then exit 0
+ else
+   if [ "$2" = "-show" ];
+    then exit 0
+      
+   fi
+ fi
+
+eval $Command  #execute command
